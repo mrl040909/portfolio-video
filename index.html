@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI电商视频 | 作品集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family: "Segoe UI", Roboto, sans-serif;}
+:root{
+  --bg:#050710;
+  --card:#0c1020;
+  --primary:#00e5ff;
+  --secondary:#7c3aed;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  position:relative;
+  overflow-x:hidden;
+}
+#particleCanvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  z-index:0;
+  pointer-events:none;
+}
+.content-wrap{
+  position:relative;
+  z-index:2;
+}
+nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(5,7,16,0.72);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,229,255,0.15);
+  padding:1rem 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--primary);
+  letter-spacing:1px;
+}
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:26px;
+  transition:0.3s;
+}
+.nav-links a:hover{
+  color:var(--primary);
+  text-shadow:0 0 8px rgba(0,229,255,0.5);
+}
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 5%;
+}
+.hero{
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:6rem 0;
+}
+.hero h1{
+  font-size:clamp(2.2rem,6vw,4rem);
+  line-height:1.15;
+}
+.hero h1 span{
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero p{
+  color:var(--muted);
+  max-width:700px;
+  font-size:1.1rem;
+  margin:1.5rem 0 2.5rem;
+  line-height:1.7;
+}
+.btn{
+  display:inline-block;
+  padding:0.9rem 1.8rem;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+  margin-right:14px;
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--primary),#0284c7);
+  color:#04111c;
+  box-shadow:0 0 14px rgba(0,229,255,0.35);
+}
+.btn-outline{
+  border:1px solid var(--primary);
+  color:var(--primary);
+  background:transparent;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(0,229,255,0.45);
+}
+section{
+  padding:5rem 0;
+}
+.section-title{
+  font-size:1.9rem;
+  margin-bottom:2.5rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.section-title::before{
+  content:"";
+  width:5px;
+  height:24px;
+  background:linear-gradient(180deg,var(--primary),var(--secondary));
+  border-radius:3px;
+}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+}
+.tag-group{
+  margin-top:1rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.tag{
+  padding:7px 14px;
+  border:1px solid rgba(0,229,255,0.25);
+  border-radius:999px;
+  color:#b5e8f0;
+  font-size:0.9rem;
+  background:rgba(0,229,255,0.05);
+}
+.project-card{
+  background:var(--card);
+  border:1px solid rgba(0,229,255,0.12);
+  border-radius:14px;
+  padding:1.8rem;
+  margin-bottom:2.2rem;
+  transition:0.35s;
+}
+.project-card:hover{
+  border-color:rgba(0,229,255,0.4);
+  box-shadow:0 0 22px rgba(0,229,255,0.12);
+  transform:translateY(-4px);
+}
+.project-meta{
+  color:var(--muted);
+  font-size:0.9rem;
+  margin:0.6rem 0 1rem;
+}
+.prompt-box{
+  background:#040714;
+  border-left:3px solid var(--secondary);
+  padding:1rem;
+  border-radius:8px;
+  font-family:Consolas,monospace;
+  font-size:0.85rem;
+  color:#c4b5fd;
+  overflow-x:auto;
+  margin:1rem 0;
+}
+.video-box{
+  width:100%;
+  max-width:360px;
+  aspect-ratio:9/16;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid rgba(0,229,255,0.2);
+  margin:1rem 0;
+}
+video{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.contact-info p{
+  margin:0.7rem 0;
+  color:var(--muted);
+}
+.contact-info a{
+  color:var(--primary);
+  text-decoration:none;
+}
+footer{
+  text-align:center;
+  padding:2.5rem 0;
+  color:#475569;
+  font-size:0.9rem;
+  border-top:1px solid rgba(0,229,255,0.1);
+}
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .nav-links a{margin-left:12px;font-size:0.9rem;}
+  .video-box{max-width:100%;}
+}
+html{scroll-behavior:smooth;}
+</style>
+</head>
+<body>
+<canvas id="particleCanvas"></canvas>
+<div class="content-wrap">
+<nav>
+  <div class="logo">AI 电商视频</div>
+  <div class="nav-links">
+    <a href="#home">首页</a>
+    <a href="#about">简历&能力</a>
+    <a href="#works">项目作品</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+<div class="container">
+  <section id="home" class="hero">
+    <h1>AI电商视频<br><span>生成 + 剪辑</span></h1>
+    <p>专注电商短视频制作，AI生成画面、多语种脚本配音、商品展示视频、投流素材剪辑，支持德国、美国、意大利、葡萄牙、西班牙等市场。</p>
+    <div>
+      <a href="#works" class="btn btn-primary">浏览作品</a>
+      <a href="#about" class="btn btn-outline">查看简历</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">关于我 & 简历</h2>
+    <div class="about-grid">
+      <div>
+        <p>专注欧美跨境电商广告素材制作，熟悉欧美信息流投放逻辑，擅长前3秒钩子、痛点前置、CTA转化引导。
+        <br><br>
+        可独立完成：脚本撰写→分镜规划→AI素材生成→剪辑调色→多语种字幕配音，并且根据投放数据迭代素材变体。</p>
+        <br>
+        <a href="【简历.pdf】" class="btn btn-outline">下载简历 PDF</a>
+      </div>
+      <div>
+        <p><strong>工具栈</strong></p>
+        <div class="tag-group">
+          <span class="tag">Seedance</span>
+          <span class="tag">ComfyUI</span>
+          <span class="tag">Kling</span>
+          <span class="tag">Runway</span>
+          <span class="tag">CapCut</span>
+          <span class="tag">GPT / 脚本</span>
+          <span class="tag">Midjourney</span>
+        </div>
+        <p style="margin-top:1.2rem;"><strong>可服务市场</strong></p>
+        <div class="tag-group">
+          <span class="tag">德国 Deutsch</span>
+          <span class="tag">美国 English</span>
+          <span class="tag">意大利 Italiano</span>
+          <span class="tag">葡萄牙 Português</span>
+          <span class="tag">西班牙 Español</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works">
+    <h2 class="section-title">项目案例</h2>
+
+    <div class="project-card">
+      <h3>DE 01｜圣诞捏捏乐｜德语TikTok广告</h3>
+      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：节日爆款、A/B变体</div>
+      <p>节日解压玩具，主打圣诞氛围展示、解压玩法演示，德语配音字幕，适合旺季投放。AI生成产品特写与揉捏动态，后期修复画面瑕疵、卡点剪辑。</p>
+      <div class="prompt-box">
+9:16 vertical tiktok ad, christmas fidget squeeze toy, cozy festive background, soft christmas lighting, close-up squeeze action, photorealistic commercial shot, no distorted hands --ar 9:16
+      </div>
+      <div class="video-box">
+        <video controls preload="none">
+          <source src="圣诞捏捏乐.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p>交付：多版钩子脚本 + 德语配音 + 德语字幕，可按需衍生其他语种版本。</p>
+    </div>
+
+    <div class="project-card">
+      <h3>DE 02｜老人面罩｜德语TikTok广告</h3>
+      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：居家实用品、痛点广告</div>
+      <p>面向老年群体的防护面罩，突出轻便、佩戴舒适、视野清晰的卖点，痛点前置，德语配音字幕。</p>
+      <div class="prompt-box">
+9:16 vertical tiktok ad, lightweight face shield for elderly, home scene, clear view, easy to wear, soft indoor light, realistic product demo, commercial ad style --ar 9:16
+      </div>
+      <div class="video-box">
+        <video controls preload="none">
+          <source src="老人面罩.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p>交付：痛点向脚本 + 德语配音 + 德语字幕，适合居家品类投放。</p>
+    </div>
+
+    <div class="project-card">
+      <h3>DE 03｜多功能挂钩｜德语TikTok广告</h3>
+      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：家居小工具、多场景展示</div>
+      <p>多功能无痕挂钩，多场景演示承重、安装便捷，快速展示使用方式，德语配音字幕。</p>
+      <div class="prompt-box">
+9:16 vertical tiktok ad, multi-purpose hook, multiple usage scenes, strong load bearing, easy install, clean home background, product demonstration shot --ar 9:16
+      </div>
+      <div class="video-box">
+        <video controls preload="none">
+          <source src="多功能挂钩.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p>交付：多场景脚本 + 德语配音 + 德语字幕。</p>
+    </div>
+
+    <div class="project-card">
+      <h3>US 01｜多功能扳手｜英语Meta广告</h3>
+      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：五金工具、效果演示</div>
+      <p>多功能万能扳手，重点展示适配多种螺母、省力操作，强效果向广告，英文配音字幕。</p>
+      <div class="prompt-box">
+9:16 vertical reels ad, universal wrench tool, garage scene, demonstrate multi-size nuts, smooth operation, realistic tool shot, commercial ad --ar 9:16
+      </div>
+      <div class="video-box">
+        <video controls preload="none">
+          <source src="扳手.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p>交付：卖点演示脚本 + 英文配音 + 英文字幕。</p>
+    </div>
+
+    <div class="project-card">
+      <h3>US 02｜管道探视器｜英语Meta广告</h3>
+      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：维修工具、解决痛点</div>
+      <p>管道内窥镜探视器，展示狭小空间探查、高清画面，解决看不见管道内部的痛点，英文配音字幕。</p>
+      <div class="prompt-box">
+9:16 vertical reels ad, endoscope inspection camera, pipe inspection, clear screen view, handy tool demo, workshop background, photorealistic commercial shot --ar 9:16
+      </div>
+      <div class="video-box">
+        <video controls preload="none">
+          <source src="探视器.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p>交付：痛点解决脚本 + 英文配音 + 英文字幕。</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">联系我</h2>
+    <div class="contact-info">
+      <p>邮箱：<a href="mailto:xxx@xxx.com">xxx@xxx.com</a></p>
+      <p>微信：xxxxxx</p>
+    </div>
+  </section>
+</div>
+<footer>© 2026 AI电商视频作品集</footer>
+</div>
+
+<script>
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let w, h;
+let particles = [];
+const particleCount = 80;
+
+function resize(){
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle{
+  constructor(){
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.radius = Math.random() * 1.4 + 0.3;
+    this.speedX = (Math.random()-0.5)*0.4;
+    this.speedY = (Math.random()-0.5)*0.4;
+    this.color = Math.random()>0.5 ? '#00e5ff' : '#7c3aed';
+  }
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x<0) this.x = w;
+    if(this.x>w) this.x = 0;
+    if(this.y<0) this.y = h;
+    if(this.y>h) this.y = 0;
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = 0.6;
+    ctx.fill();
+  }
+}
+for(let i=0;i<particleCount;i++){
+  particles.push(new Particle());
+}
+
+function connect(){
+  for(let a=0;a<particles.length;a++){
+    for(let b=a+1;b<particles.length;b++){
+      const dx = particles[a].x - particles[b].x;
+      const dy = particles[a].y - particles[b].y;
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      if(dist < 100){
+        ctx.beginPath();
+        ctx.moveTo(particles[a].x, particles[a].y);
+        ctx.lineTo(particles[b].x, particles[b].y);
+        ctx.strokeStyle = '#00e5ff';
+        ctx.globalAlpha = 0.12;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  particles.forEach(p=>{
+    p.update();
+    p.draw();
+  })
+  connect();
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
