@@ -192,6 +192,14 @@ video{
   height:100%;
   display:block;
 }
+/* 隐藏占位视频 */
+.dummy-video{
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+  pointer-events:none;
+}
 .contact-info p{
   margin:0.7rem 0;
   color:var(--muted);
@@ -216,6 +224,9 @@ html{scroll-behavior:smooth;}
 </style>
 </head>
 <body>
+<!-- 隐形占位视频，吃掉Safari第一个video画中画bug -->
+<video class="dummy-video" preload="none" playsinline disablepictureinpicture></video>
+
 <canvas id="particleCanvas"></canvas>
 <div class="content-wrap">
 <nav>
@@ -432,8 +443,8 @@ function animate(){
 }
 animate();
 
-// ========== 新增：滚动离开可视区自动暂停视频 ==========
-const videoList = document.querySelectorAll('video');
+// ========== 滚动离开可视区自动暂停 ==========
+const videoList = document.querySelectorAll('video:not(.dummy-video)');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) {
@@ -444,6 +455,13 @@ const observer = new IntersectionObserver((entries) => {
 
 videoList.forEach(video => {
   observer.observe(video);
+  // 兜底：一旦进入画中画，立刻退出+暂停
+  video.addEventListener('enterpictureinpicture', async ()=>{
+    try{
+      await document.exitPictureInPicture();
+    }catch(e){}
+    video.pause();
+  })
 });
 </script>
 </body>
