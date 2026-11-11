@@ -188,7 +188,6 @@ section{
   margin:1rem 0;
   background:#000;
 }
-.video-box iframe{width:100%;height:100%;border:none;}
 video{
   width:100%;
   height:100%;
@@ -283,7 +282,9 @@ html{scroll-behavior:smooth;}
 9:16 vertical tiktok ad, christmas fidget squeeze toy, cozy festive background, soft christmas lighting, close-up squeeze action, photorealistic commercial shot, no distorted hands --ar 9:16
       </div>
       <div class="video-box">
-        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1c9WT6XE7A&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <video playsinline disablePictureInPicture controls preload="none">
+          <source src="https://portfolio-video-2026.oss-cn-hangzhou.aliyuncs.com/%E5%9C%A3%E8%AF%9E%E6%8D%8F%E6%8D%8F%E4%B9%90.mp4" type="video/mp4">
+        </video>
       </div>
       <p>交付：多版钩子脚本 + 德语字幕，可按需衍生其他语种版本。</p>
     </div>
@@ -296,7 +297,9 @@ html{scroll-behavior:smooth;}
 9:16 vertical tiktok ad, lightweight face shield for elderly, home scene, clear view, easy to wear, soft indoor light, realistic product demo, commercial ad style --ar 9:16
       </div>
       <div class="video-box">
-        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eEZJ&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <video playsinline disablePictureInPicture controls preload="none">
+          <source src="https://portfolio-video-2026.oss-cn-hangzhou.aliyuncs.com/%E8%80%81%E4%BA%BA%E9%9D%A2%E7%BD%A9.mp4" type="video/mp4">
+        </video>
       </div>
       <p>交付：痛点向脚本 + 德语字幕，适合居家品类投放。</p>
     </div>
@@ -309,7 +312,9 @@ html{scroll-behavior:smooth;}
 9:16 vertical tiktok ad, multi-purpose hook, multiple usage scenes, strong load bearing, easy install, clean home background, product demonstration shot --ar 9:16
       </div>
       <div class="video-box">
-        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eErJ&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <video playsinline disablePictureInPicture controls preload="none">
+          <source src="https://portfolio-video-2026.oss-cn-hangzhou.aliyuncs.com/%E5%A4%9A%E5%8A%9F%E8%83%BD%E6%8C%82%E9%92%A9.mp4" type="video/mp4">
+        </video>
       </div>
       <p>交付：多场景脚本 + 德语配音 + 德语字幕。</p>
     </div>
@@ -322,7 +327,9 @@ html{scroll-behavior:smooth;}
 9:16 vertical reels ad, universal wrench tool, garage scene, demonstrate multi-size nuts, smooth operation, realistic tool shot, commercial ad --ar 9:16
       </div>
       <div class="video-box">
-        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eEVJ&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <video playsinline disablePictureInPicture controls preload="none">
+          <source src="https://portfolio-video-2026.oss-cn-hangzhou.aliyuncs.com/%E5%A4%9A%E5%8A%9F%E8%83%BD%E6%89%B3%E6%89%8B.mp4" type="video/mp4">
+        </video>
       </div>
       <p>交付：卖点演示脚本 + 英文配音 + 英文字幕。</p>
     </div>
@@ -335,7 +342,9 @@ html{scroll-behavior:smooth;}
 9:16 vertical reels ad, endoscope inspection camera, pipe inspection, clear screen view, handy tool demo, workshop background, photorealistic commercial shot --ar 9:16
       </div>
       <div class="video-box">
-        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1w9WT6XEGM&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <video playsinline disablePictureInPicture controls preload="none">
+          <source src="https://portfolio-video-2026.oss-cn-hangzhou.aliyuncs.com/%E6%8E%A2%E8%A7%86%E5%99%A8.mp4" type="video/mp4">
+        </video>
       </div>
       <p>交付：痛点解决脚本 + 英文配音 + 英文字幕。</p>
     </div>
@@ -424,22 +433,18 @@ function animate(){
 }
 animate();
 
-// B站iframe懒加载（修复刷新失效）
-const iframeObserver = new IntersectionObserver((entries)=>{
+// 视频离开视口自动暂停
+const videoObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const iframe = entry.target;
-      if(!iframe.src){
-        iframe.src = iframe.dataset.src;
-      }
+    if(!entry.isIntersecting){
+      entry.target.pause();
     }
   })
-}, {rootMargin:"180px 0px"});
+}, {threshold:0.1});
 
-document.querySelectorAll('iframe[data-src]').forEach(iframe=>{
-  iframeObserver.observe(iframe);
+document.querySelectorAll('video').forEach(v=>{
+  videoObserver.observe(v);
 });
 </script>
 </body>
 </html>
-
