@@ -192,14 +192,6 @@ video{
   height:100%;
   display:block;
 }
-/* 隐藏占位视频 */
-.dummy-video{
-  position:absolute;
-  width:1px;
-  height:1px;
-  opacity:0;
-  pointer-events:none;
-}
 .contact-info p{
   margin:0.7rem 0;
   color:var(--muted);
@@ -224,9 +216,6 @@ html{scroll-behavior:smooth;}
 </style>
 </head>
 <body>
-<!-- 隐形占位视频，吃掉Safari第一个video画中画bug -->
-<video class="dummy-video" preload="none" playsinline disablepictureinpicture></video>
-
 <canvas id="particleCanvas"></canvas>
 <div class="content-wrap">
 <nav>
@@ -302,7 +291,7 @@ html{scroll-behavior:smooth;}
     <div class="project-card">
       <h3>DE 02｜老人面罩｜德语TikTok广告</h3>
       <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：居家实用品、痛点广告</div>
-      <p>面向青年群体的防护面罩，突出轻便、佩戴舒适、视野清晰的卖点，痛点前置，德语配音字幕。</p>
+      <p>面向年轻群体的防护面罩，突出轻便、佩戴舒适、视野清晰的卖点，痛点前置，德语配音字幕。</p>
       <div class="prompt-box">
 9:16 vertical tiktok ad, lightweight face shield for elderly, home scene, clear view, easy to wear, soft indoor light, realistic product demo, commercial ad style --ar 9:16
       </div>
@@ -443,8 +432,8 @@ function animate(){
 }
 animate();
 
-// ========== 滚动离开可视区自动暂停 ==========
-const videoList = document.querySelectorAll('video:not(.dummy-video)');
+// ========== 新增：滚动离开可视区自动暂停视频 ==========
+const videoList = document.querySelectorAll('video');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) {
@@ -455,13 +444,6 @@ const observer = new IntersectionObserver((entries) => {
 
 videoList.forEach(video => {
   observer.observe(video);
-  // 兜底：一旦进入画中画，立刻退出+暂停
-  video.addEventListener('enterpictureinpicture', async ()=>{
-    try{
-      await document.exitPictureInPicture();
-    }catch(e){}
-    video.pause();
-  })
 });
 </script>
 </body>
