@@ -186,6 +186,7 @@ section{
   overflow:hidden;
   border:1px solid rgba(0,229,255,0.2);
   margin:1rem 0;
+  background:#000;
 }
 .video-box iframe{width:100%;height:100%;border:none;}
 video{
@@ -316,7 +317,7 @@ html{scroll-behavior:smooth;}
     <div class="project-card">
       <h3>US 01｜多功能扳手｜英语Meta广告</h3>
       <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：五金工具、效果演示</div>
-      <p>多功能万能扳手，重点展示适配多种螺母、省力操作，强效果向广告，英文配音字幕。</p>
+      <p>多功能万能扳手，重点展示适配多种螺母、省力操作，强效果广告，英文配音字幕。</p>
       <div class="prompt-box">
 9:16 vertical reels ad, universal wrench tool, garage scene, demonstrate multi-size nuts, smooth operation, realistic tool shot, commercial ad --ar 9:16
       </div>
@@ -328,8 +329,8 @@ html{scroll-behavior:smooth;}
 
     <div class="project-card">
       <h3>US 02｜管道探视器｜英语Meta广告</h3>
-      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：维修工具、解决痛点</div>
-      <p>管道内窥镜探视器，展示狭小空间探查、高清画面，解决看不见管道内部的痛点，英文配音字幕。</p>
+      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：维修工具、痛点解决</div>
+      <p>管道内窥镜探视器，展示狭小空间探查、高清画面，解决看不到管道内部的痛点，英文配音字幕。</p>
       <div class="prompt-box">
 9:16 vertical reels ad, endoscope inspection camera, pipe inspection, clear screen view, handy tool demo, workshop background, photorealistic commercial shot --ar 9:16
       </div>
@@ -423,13 +424,14 @@ function animate(){
 }
 animate();
 
-// ========== B站 iframe 懒加载新增代码 ==========
+// B站iframe懒加载（修复刷新失效）
 const iframeObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
       const iframe = entry.target;
-      iframe.src = iframe.dataset.src;
-      iframeObserver.unobserve(iframe);
+      if(!iframe.src){
+        iframe.src = iframe.dataset.src;
+      }
     }
   })
 }, {rootMargin:"180px 0px"});
@@ -440,3 +442,4 @@ document.querySelectorAll('iframe[data-src]').forEach(iframe=>{
 </script>
 </body>
 </html>
+
