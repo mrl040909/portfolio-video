@@ -76,6 +76,7 @@ nav{
 .hero h1{
   font-size:clamp(2.2rem,6vw,4rem);
   line-height:1.15;
+  margin-bottom:1.5rem;
 }
 .hero h1 span{
   background:linear-gradient(90deg,var(--primary),var(--secondary));
@@ -86,14 +87,14 @@ nav{
 .hero p{
   color:var(--muted);
   max-width:700px;
-  font-size:1.1rem;
-  margin:1.5rem 0 2.5rem;
+  font-size:1.05rem;
   line-height:1.7;
+  margin-bottom:2.5rem;
 }
 .btn{
   display:inline-block;
   padding:0.9rem 1.8rem;
-  border-radius:6px;
+  border-radius:8px;
   text-decoration:none;
   font-weight:500;
   transition:0.3s;
@@ -102,7 +103,7 @@ nav{
 .btn-primary{
   background:linear-gradient(90deg,var(--primary),#0284c7);
   color:#04111c;
-  box-shadow:0 0 14px rgba(0,229,255,0.35);
+  box-shadow:0 0 14px rgba(0,229,255,0.25);
 }
 .btn-outline{
   border:1px solid var(--primary);
@@ -111,7 +112,7 @@ nav{
 }
 .btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 0 20px rgba(0,229,255,0.45);
+  box-shadow:0 0 20px rgba(0,229,255,0.35);
 }
 section{
   padding:5rem 0;
@@ -186,9 +187,9 @@ section{
   overflow:hidden;
   border:1px solid rgba(0,229,255,0.2);
   margin:1rem 0;
+  position:relative;
 }
-.video-box iframe{width:100%;height:100%;border:none;}
-video{
+.video-box iframe{
   width:100%;
   height:100%;
   display:block;
@@ -223,18 +224,92 @@ html{scroll-behavior:smooth;}
   <div class="logo">AI 电商视频</div>
   <div class="nav-links">
     <a href="#home">首页</a>
-    <a href="#about">简历&能力</a>
-    <a href="#works">项目作品</a>
+    <a href="#works">浏览作品</a>
+    <a href="#about">查看简历</a>
     <a href="#contact">联系</a>
   </div>
 </nav>
 <div class="container">
   <section id="home" class="hero">
     <h1>AI电商视频<br><span>生成 + 剪辑</span></h1>
-    <p>专注电商短视频制作，AI生成画面、多语种脚本配音、商品展示视频、投流素材剪辑，支持德国、美国、意大利、葡萄牙、西班牙等市场。</p>
+    <p>专注电商短视频制作，AI生成画面、多语种脚本配音、商品展示信息流投流剪辑，支持德国、美国、意大利、葡萄牙、西班牙等海外市场。</p>
     <div>
       <a href="#works" class="btn btn-primary">浏览作品</a>
       <a href="#about" class="btn btn-outline">查看简历</a>
+    </div>
+  </section>
+
+  <section id="works">
+    <h2 class="section-title">项目案例</h2>
+
+    <!-- 1. 圣诞捏捏乐 BV1w9WT6XEGM -->
+    <div class="project-card">
+      <h3>DE 01｜圣诞捏捏乐｜德语TikTok广告</h3>
+      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：节日爆款、A/B变体</div>
+      <p>节日解压玩具，主打圣诞氛围感和解压玩法演示，德语配音字幕，适合旺季投放。AI生成产品特写和揉捏动态，后期修复画面瑕疵、卡点剪辑。</p>
+      <div class="prompt-box">
+9:16 vertical tiktok ad, christmas fidget squeeze toy, cozy festive background, soft christmas lighting, close-up squeeze action, photorealistic commercial shot, no distorted hands --ar 9:16
+      </div>
+      <div class="video-box">
+        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1w9WT6XEGM&page=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" allow="encrypted-media"></iframe>
+      </div>
+      <p>交付内容：多版钩子脚本 + 德语字幕，可快速衍生其他语种版本</p>
+    </div>
+
+    <!-- 2. 老人面罩 BV1c9WT6XE7A -->
+    <div class="project-card">
+      <h3>DE 02｜老人面罩｜德语TikTok广告</h3>
+      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：居家实用品、痛点广告</div>
+      <p>面向老年群体防护面罩，突出轻便舒适、视野清晰卖点，痛点前置，德语配音字幕。</p>
+      <div class="prompt-box">
+9:16 vertical tiktok ad, lightweight face shield for elderly, home scene, clear view, easy to wear, soft indoor light, realistic product demo, commercial ad style --ar 9:16
+      </div>
+      <div class="video-box">
+        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1c9WT6XE7A&page=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" allow="encrypted-media"></iframe>
+      </div>
+      <p>交付内容：痛点向脚本 + 德语字幕，适合居家品类投放</p>
+    </div>
+
+    <!-- 3. 多功能挂钩 BV1uqWT6eEZJ -->
+    <div class="project-card">
+      <h3>DE 03｜多功能挂钩｜德语TikTok广告</h3>
+      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：家居小工具、多场景演示</div>
+      <p>无痕多功能挂钩，多场景展示承重、安装便捷，德语配音字幕。</p>
+      <div class="prompt-box">
+9:16 vertical tiktok ad, multi-purpose hook, multiple usage scenes, strong load bearing, easy install, clean home background, product demonstration --ar 9:16
+      </div>
+      <div class="video-box">
+        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eEZJ&page=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" allow="encrypted-media"></iframe>
+      </div>
+      <p>交付内容：多场景脚本 + 德语配音字幕</p>
+    </div>
+
+    <!-- 4. 多功能扳手 BV1uqWT6eErJ -->
+    <div class="project-card">
+      <h3>US 01｜多功能扳手｜英语Meta广告</h3>
+      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：五金工具、效果演示</div>
+      <p>万能多功能扳手，重点展示适配多种螺母、省力操作，强效果向英文广告。</p>
+      <div class="prompt-box">
+9:16 vertical reels ad, universal wrench tool, garage scene, demonstrate multi-size nuts, smooth operation, realistic tool shot, commercial ad --ar 9:16
+      </div>
+      <div class="video-box">
+        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eErJ&page=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" allow="encrypted-media"></iframe>
+      </div>
+      <p>交付内容：卖点演示脚本 + 英文字幕</p>
+    </div>
+
+    <!-- 5. 管道探视器 BV1uqWT6eEVJ -->
+    <div class="project-card">
+      <h3>US 02｜管道探视器｜英语Meta广告</h3>
+      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：维修工具、痛点解决广告</div>
+      <p>管道内窥镜，狭小空间探查高清画面，解决看不见管道内部的痛点，英文配音字幕。</p>
+      <div class="prompt-box">
+9:16 vertical reels ad, endoscope inspection camera, pipe inspection, clear screen view, handy tool demo, workshop background, photorealistic commercial shot --ar 9:16
+      </div>
+      <div class="video-box">
+        <iframe data-src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eEVJ&page=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" allow="encrypted-media"></iframe>
+      </div>
+      <p>交付内容：痛点解决脚本 + 英文配音字幕</p>
     </div>
   </section>
 
@@ -242,9 +317,9 @@ html{scroll-behavior:smooth;}
     <h2 class="section-title">关于我 & 简历</h2>
     <div class="about-grid">
       <div>
-        <p>专注欧美跨境电商广告素材制作，熟悉欧美信息流投放逻辑，擅长前3秒钩子、痛点前置、CTA转化引导。
+        <p>专注欧美跨境电商广告素材制作，熟悉海外信息流投放逻辑，擅长3秒钩子、痛点前置、CTA引导。
         <br><br>
-        可独立完成：脚本撰写→分镜规划→AI素材生成→剪辑调色→多语种字幕配音，并且根据投放数据迭代素材变体。</p>
+        独立完成：脚本撰写→分镜设计→AI素材生成→剪辑调色→多语种字幕配音，并且根据投放数据迭代优化版本。</p>
         <br>
         <a href="简历.pdf" class="btn btn-outline">下载简历 PDF</a>
       </div>
@@ -271,75 +346,6 @@ html{scroll-behavior:smooth;}
     </div>
   </section>
 
-  <section id="works">
-    <h2 class="section-title">项目案例</h2>
-
-    <div class="project-card">
-      <h3>DE 01｜圣诞捏捏乐｜德语TikTok广告</h3>
-      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：节日爆款、A/B变体</div>
-      <p>节日解压玩具，主打圣诞氛围展示、解压玩法演示，德语配音字幕，适合旺季投放。AI生成产品特写与揉捏动态，后期修复画面瑕疵、卡点剪辑。</p>
-      <div class="prompt-box">
-9:16 vertical tiktok ad, christmas fidget squeeze toy, cozy festive background, soft christmas lighting, close-up squeeze action, photorealistic commercial shot, no distorted hands --ar 9:16
-      </div>
-      <div class="video-box">
-        <iframe src="https://player.bilibili.com/player.html?bvid=BV1c9WT6XE7A&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <p>交付：多版钩子脚本 + 德语字幕，可按需衍生其他语种版本。</p>
-    </div>
-
-    <div class="project-card">
-      <h3>DE 02｜老人面罩｜德语TikTok广告</h3>
-      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：居家实用品、痛点广告</div>
-      <p>面向青年群体的防护面罩，突出轻便、佩戴舒适、视野清晰的卖点，痛点前置，德语配音字幕。</p>
-      <div class="prompt-box">
-9:16 vertical tiktok ad, lightweight face shield for elderly, home scene, clear view, easy to wear, soft indoor light, realistic product demo, commercial ad style --ar 9:16
-      </div>
-      <div class="video-box">
-        <iframe src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eEZJ&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <p>交付：痛点向脚本 + 德语字幕，适合居家品类投放。</p>
-    </div>
-
-    <div class="project-card">
-      <h3>DE 03｜多功能挂钩｜德语TikTok广告</h3>
-      <div class="project-meta">平台：TikTok Ads｜地区：德国 Deutsch｜类型：家居小工具、多场景展示</div>
-      <p>多功能无痕挂钩，多场景演示承重、安装便捷，快速展示使用方式，德语配音字幕。</p>
-      <div class="prompt-box">
-9:16 vertical tiktok ad, multi-purpose hook, multiple usage scenes, strong load bearing, easy install, clean home background, product demonstration shot --ar 9:16
-      </div>
-      <div class="video-box">
-        <iframe src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eErJ&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <p>交付：多场景脚本 + 德语配音 + 德语字幕。</p>
-    </div>
-
-    <div class="project-card">
-      <h3>US 01｜多功能扳手｜英语Meta广告</h3>
-      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：五金工具、效果演示</div>
-      <p>多功能万能扳手，重点展示适配多种螺母、省力操作，强效果向广告，英文配音字幕。</p>
-      <div class="prompt-box">
-9:16 vertical reels ad, universal wrench tool, garage scene, demonstrate multi-size nuts, smooth operation, realistic tool shot, commercial ad --ar 9:16
-      </div>
-      <div class="video-box">
-        <iframe src="https://player.bilibili.com/player.html?bvid=BV1uqWT6eEVJ&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <p>交付：卖点演示脚本 + 英文配音 + 英文字幕。</p>
-    </div>
-
-    <div class="project-card">
-      <h3>US 02｜管道探视器｜英语Meta广告</h3>
-      <div class="project-meta">平台：Meta Reels｜地区：美国 English｜类型：维修工具、解决痛点</div>
-      <p>管道内窥镜探视器，展示狭小空间探查、高清画面，解决看不见管道内部的痛点，英文配音字幕。</p>
-      <div class="prompt-box">
-9:16 vertical reels ad, endoscope inspection camera, pipe inspection, clear screen view, handy tool demo, workshop background, photorealistic commercial shot --ar 9:16
-      </div>
-      <div class="video-box">
-        <iframe src="https://player.bilibili.com/player.html?bvid=BV1w9WT6XEGM&page=1&high_quality=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-      </div>
-      <p>交付：痛点解决脚本 + 英文配音 + 英文字幕。</p>
-    </div>
-  </section>
-
   <section id="contact">
     <h2 class="section-title">联系我</h2>
     <div class="contact-info">
@@ -352,76 +358,77 @@ html{scroll-behavior:smooth;}
 </div>
 
 <script>
+// 粒子背景
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
-let w, h;
-let particles = [];
-const particleCount = 80;
-
+let w, h, particles = [];
 function resize(){
   w = canvas.width = window.innerWidth;
   h = canvas.height = window.innerHeight;
 }
 resize();
-window.addEventListener('resize', resize);
-
+window.addEventListener('resize',resize);
 class Particle{
   constructor(){
-    this.x = Math.random() * w;
-    this.y = Math.random() * h;
-    this.radius = Math.random() * 1.4 + 0.3;
+    this.x = Math.random()*w;
+    this.y = Math.random()*h;
+    this.r = Math.random()*1.2+0.3;
     this.speedX = (Math.random()-0.5)*0.4;
     this.speedY = (Math.random()-0.5)*0.4;
-    this.color = Math.random()>0.5 ? '#00e5ff' : '#7c3aed';
   }
   update(){
     this.x += this.speedX;
     this.y += this.speedY;
-    if(this.x<0) this.x = w;
-    if(this.x>w) this.x = 0;
-    if(this.y<0) this.y = h;
-    if(this.y>h) this.y = 0;
+    if(this.x<0) this.x=w;
+    if(this.x>w) this.x=0;
+    if(this.y<0) this.y=h;
+    if(this.y>h) this.y=0;
   }
   draw(){
     ctx.beginPath();
-    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
-    ctx.fillStyle = this.color;
-    ctx.globalAlpha = 0.6;
+    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(0,229,255,0.35)';
     ctx.fill();
   }
 }
-for(let i=0;i<particleCount;i++){
-  particles.push(new Particle());
-}
-
-function connect(){
-  for(let a=0;a<particles.length;a++){
-    for(let b=a+1;b<particles.length;b++){
-      const dx = particles[a].x - particles[b].x;
-      const dy = particles[a].y - particles[b].y;
-      const dist = Math.sqrt(dx*dx+dy*dy);
-      if(dist < 100){
-        ctx.beginPath();
-        ctx.moveTo(particles[a].x, particles[a].y);
-        ctx.lineTo(particles[b].x, particles[b].y);
-        ctx.strokeStyle = '#00e5ff';
-        ctx.globalAlpha = 0.12;
-        ctx.stroke();
-      }
-    }
+for(let i=0;i<80;i++) particles.push(new Particle());
+function drawLine(p1,p2){
+  const dx = p1.x-p2.x;
+  const dy = p1.y-p2.y;
+  const dist = Math.sqrt(dx*dx+dy*dy);
+  if(dist<100){
+    ctx.beginPath();
+    ctx.moveTo(p1.x,p1.y);
+    ctx.lineTo(p2.x,p2.y);
+    ctx.strokeStyle = `rgba(0,229,255,${0.12*(1-dist/100)})`;
+    ctx.stroke();
   }
 }
-
 function animate(){
   ctx.clearRect(0,0,w,h);
-  particles.forEach(p=>{
-    p.update();
-    p.draw();
-  })
-  connect();
+  particles.forEach(p=>{p.update();p.draw();});
+  for(let a=0;a<particles.length;a++){
+    for(let b=a+1;b<particles.length;b++){
+      drawLine(particles[a],particles[b]);
+    }
+  }
   requestAnimationFrame(animate);
 }
 animate();
+
+// B站iframe懒加载：进入视口才加载播放器
+const iframeList = document.querySelectorAll('iframe[data-src]');
+const iframeObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const iframe = entry.target;
+      iframe.src = iframe.dataset.src;
+      iframeObserver.unobserve(iframe);
+    }
+  })
+},{rootMargin:"150px 0px"});
+iframeList.forEach(iframe=>iframeObserver.observe(iframe));
 </script>
 </body>
 </html>
+
