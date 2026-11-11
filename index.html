@@ -281,7 +281,7 @@ html{scroll-behavior:smooth;}
 9:16 vertical tiktok ad, christmas fidget squeeze toy, cozy festive background, soft christmas lighting, close-up squeeze action, photorealistic commercial shot, no distorted hands --ar 9:16
       </div>
       <div class="video-box">
-        <video controls preload="none" playsinline disablepictureinpicture>
+        <video controls preload="none">
           <source src="http://video-portfolio.test.upcdn.net/圣诞捏捏乐.mp4" type="video/mp4">
         </video>
       </div>
@@ -296,7 +296,7 @@ html{scroll-behavior:smooth;}
 9:16 vertical tiktok ad, lightweight face shield for elderly, home scene, clear view, easy to wear, soft indoor light, realistic product demo, commercial ad style --ar 9:16
       </div>
       <div class="video-box">
-        <video controls preload="none" playsinline disablepictureinpicture>
+        <video controls preload="none">
           <source src="http://video-portfolio.test.upcdn.net/老人面罩.mp4" type="video/mp4">
         </video>
       </div>
@@ -311,7 +311,7 @@ html{scroll-behavior:smooth;}
 9:16 vertical tiktok ad, multi-purpose hook, multiple usage scenes, strong load bearing, easy install, clean home background, product demonstration shot --ar 9:16
       </div>
       <div class="video-box">
-        <video controls preload="none" playsinline disablepictureinpicture>
+        <video controls preload="none">
           <source src="http://video-portfolio.test.upcdn.net/多功能挂钩.mp4" type="video/mp4">
         </video>
       </div>
@@ -326,7 +326,7 @@ html{scroll-behavior:smooth;}
 9:16 vertical reels ad, universal wrench tool, garage scene, demonstrate multi-size nuts, smooth operation, realistic tool shot, commercial ad --ar 9:16
       </div>
       <div class="video-box">
-        <video controls preload="none" playsinline disablepictureinpicture>
+        <video controls preload="none">
           <source src="http://video-portfolio.test.upcdn.net/多功能扳手.mp4" type="video/mp4">
         </video>
       </div>
@@ -341,7 +341,7 @@ html{scroll-behavior:smooth;}
 9:16 vertical reels ad, endoscope inspection camera, pipe inspection, clear screen view, handy tool demo, workshop background, photorealistic commercial shot --ar 9:16
       </div>
       <div class="video-box">
-        <video controls preload="none" playsinline disablepictureinpicture>
+        <video controls preload="none">
           <source src="http://video-portfolio.test.upcdn.net/探视器.mp4" type="video/mp4">
         </video>
       </div>
@@ -431,27 +431,6 @@ function animate(){
   requestAnimationFrame(animate);
 }
 animate();
-</script>
-
-<script>
-const videoList = document.querySelectorAll('video');
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-  if (!entry.isIntersecting) {
-    entry.target.pause();
-  }
-});
-}, { threshold: 0.05 });
-
-videoList.forEach(video => {
-observer.observe(video);
-video.addEventListener('enterpictureinpicture', async ()=>{
-  try{
-    await document.exitPictureInPicture();
-  }catch(e){}
-  video.pause();
-})
-});
 </script>
 </body>
 </html>
